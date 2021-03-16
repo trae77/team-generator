@@ -1,3 +1,171 @@
+const inquirer = require(`inquirer`);
+const fs = require('fs');
+const util = require('util');
+const writeFileAsync = util.promisify(fs.writeFile);
+
+const Engineer = require('./engineer');
+const Manager = require('./manager');
+const Intern = require('./intern');
+
+
+
+
+function questions() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'manager',
+            message: 'Who is the manager of your project?',
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'what is their employee id?',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'what is there email address?',
+        },
+        {
+            type: 'input',
+            name: 'officenumber',
+            message: 'what is there office number?',
+        },
+
+        {
+            type: 'list',
+            name: 'teammember',
+            message: 'Please select any new team members',
+            choices: [
+                "engineer",
+                "intern",
+                "none",
+            ]
+        },
+
+    ]).then((data) => {
+        switch (data.teammember) {
+            case x: "engineer"
+                engineer()
+                break;
+            case y: "intern"
+                intern()
+                break;
+            default: "none"
+                makefile()
+        }
+    }
+    )
+}
+
+// switch cases for engineer and intern with seperate functions to make them
+
+
+function engineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engineer',
+            message: 'Who is the engineer of your project?',
+        },
+        {
+            type: 'input',
+            name: 'engineerid',
+            message: 'what is their employee id?',
+        },
+        {
+            type: 'input',
+            name: 'engineeremail',
+            message: 'what is there email address?',
+        },
+        {
+            type: 'input',
+            name: 'username',
+            message: 'what is there github username?',
+        },
+        {
+            type: 'list',
+            name: 'teammember',
+            message: 'Please select any new team members',
+            choices: [
+                "engineer",
+                "intern",
+                "none",
+            ]
+        },
+
+    ]).then((data) => {
+        switch (data.teammember) {
+            case x: "engineer"
+                engineer()
+                break;
+            case y: "intern"
+                intern()
+                break;
+            default: "none"
+                makefile()
+        }
+        makefile()
+    })
+}
+
+function intern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'intern',
+            message: 'Who is the intern of your project?',
+        },
+        {
+            type: 'input',
+            name: 'internid',
+            message: 'what is their employee id?',
+        },
+        {
+            type: 'input',
+            name: 'internemail',
+            message: 'what is there email address?',
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'what is there school?',
+        },
+        {
+            type: 'list',
+            name: 'teammember2',
+            message: 'Please select any new team members',
+            choices: [
+                "engineer",
+                "intern",
+                "none",
+            ]
+        },
+
+    ]).then((data) => {
+        switch (data.teammember2) {
+            case engineer: "engineer"
+                engineer()
+                break;
+            case intern: "intern"
+                intern()
+                break;
+            default: "none"
+                makefile()
+        }
+  
+
+})
+}
+
+
+
+questions()
+
+function makefile() {
+
+}
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for my team members and their information
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
@@ -15,74 +183,4 @@
 // THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
-
-const inquirer = require('inquirer');
-const fs = require("fs")
-const express = require('express');
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-console.log("conencted")
-
-
-
-// team manager’s name, employee ID, email address, and office number
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
-// THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-// WHEN I select the engineer option
-// THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-// WHEN I select the intern option
-// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-// WHEN I decide to finish building my team
-// THEN I exit the application, and the HTML is generated
-
-
-// TODO: Create a function to write README file
-function writeToFile() {
-  inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "manager",
-        message: "what is the team managers name employee id email address and office number?",
-      },
-    {
-        type: "checkbox",
-        name: "intern or engineer",
-        message: "what badges do you want?",
-        choices: ["intern", "engineer",]
-      },
-     
-
-    ]).then(data => {
-      console.table(data)
-      var list = []
-      for (let i = 0; i < data.length; i++) {
-      
-
-      }
-      
-      fs.writeFile("README.md", template, (err) => {
-        if (err) {
-          throw err
-        }
-      })
-    })
-};
-
-
-
-
-// TODO: Create a function to initialize app
-function init() {
-
-  writeToFile()
-}
-
-// Function call to initialize app
-init();
-
-
-
 
