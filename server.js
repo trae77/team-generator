@@ -7,7 +7,35 @@ const Engineer = require('./engineer');
 const Manager = require('./manager');
 const Intern = require('./intern');
 
+console.log("hi");
+team = [];
 
+function test(){
+    return `<h1> Henry Ford </h1>`
+}
+
+function makefile() {
+     let template =  ` <!DOCTYPE html> 
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Document</title>
+     </head>
+     <body>
+         ${test()}
+     
+     </body>
+     </html>  `
+     fs.writeFile("index.html", template, () => {
+        if(err){console.log(err)}
+        console.log("success")
+    })
+};
+
+
+    
 
 
 function questions() {
@@ -46,13 +74,15 @@ function questions() {
 
     ]).then((data) => {
         switch (data.teammember) {
-            case x: "engineer"
+            case "engineer": 
                 engineer()
                 break;
-            case y: "intern"
+            case "intern": 
                 intern()
                 break;
             default: "none"
+            const manager1 =  new Manager(data.manager, data.id, data.email, data.officenumber )
+            team.push(manager1);
                 makefile()
         }
     }
@@ -96,11 +126,13 @@ function engineer() {
         },
 
     ]).then((data) => {
+        const engineer1 = new Engineer(data.engineer,data.engineerid,data.engineeremail,data.username)
+        team.push(engineer1)
         switch (data.teammember) {
-            case x: "engineer"
+            case "engineer": 
                 engineer()
                 break;
-            case y: "intern"
+            case "intern": 
                 intern()
                 break;
             default: "none"
@@ -144,11 +176,13 @@ function intern() {
         },
 
     ]).then((data) => {
+        const intern1 = new Intern(data.intern,data.internid,data.internemail,data.school)
+        team.push(intern1);
         switch (data.teammember2) {
-            case engineer: "engineer"
+            case "engineer": 
                 engineer()
                 break;
-            case intern: "intern"
+            case "intern": 
                 intern()
                 break;
             default: "none"
@@ -162,10 +196,11 @@ function intern() {
 
 
 questions()
+// make html with empty body , append to body from template 
 
-function makefile() {
 
-}
+
+
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for my team members and their information
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
