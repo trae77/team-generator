@@ -7,35 +7,11 @@ const Engineer = require('./engineer');
 const Manager = require('./manager');
 const Intern = require('./intern');
 
-console.log("hi");
-team = [];
 
-function test(){
-    return `<h1> Henry Ford </h1>`
-}
+Managerteam = [];
+Engineerteam = [];
+Internteam = [];
 
-function makefile() {
-     let template =  ` <!DOCTYPE html> 
-     <html lang="en">
-     <head>
-         <meta charset="UTF-8">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Document</title>
-     </head>
-     <body>
-         ${test()}
-     
-     </body>
-     </html>  `
-     fs.writeFile("index.html", template, () => {
-        if(err){console.log(err)}
-        console.log("success")
-    })
-};
-
-
-    
 
 
 function questions() {
@@ -73,6 +49,8 @@ function questions() {
         },
 
     ]).then((data) => {
+        const manager1 =  new Manager(data.manager, data.id, data.email, data.officenumber )
+        Managerteam.push(manager1);
         switch (data.teammember) {
             case "engineer": 
                 engineer()
@@ -81,8 +59,7 @@ function questions() {
                 intern()
                 break;
             default: "none"
-            const manager1 =  new Manager(data.manager, data.id, data.email, data.officenumber )
-            team.push(manager1);
+       
                 makefile()
         }
     }
@@ -127,7 +104,7 @@ function engineer() {
 
     ]).then((data) => {
         const engineer1 = new Engineer(data.engineer,data.engineerid,data.engineeremail,data.username)
-        team.push(engineer1)
+        Engineerteam.push(engineer1)
         switch (data.teammember) {
             case "engineer": 
                 engineer()
@@ -138,7 +115,7 @@ function engineer() {
             default: "none"
                 makefile()
         }
-        makefile()
+       
     })
 }
 
@@ -177,7 +154,7 @@ function intern() {
 
     ]).then((data) => {
         const intern1 = new Intern(data.intern,data.internid,data.internemail,data.school)
-        team.push(intern1);
+        Internteam.push(intern1);
         switch (data.teammember2) {
             case "engineer": 
                 engineer()
@@ -193,6 +170,110 @@ function intern() {
 })
 }
 
+function Managert(){
+    for (let index = 0; index < Managerteam.length; index++) {
+       let element = Managerteam[index].name ;
+       let element1 = Managerteam[index].id ;
+       let element2 = Managerteam[index].email ; 
+       let element3 = Managerteam[index].officenumber ;
+        return ` <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${element}</h5>
+          <p class="card-text"> ${element1} .</p>
+          <p class="card-text"> ${element2} .</p>
+          <p class="card-text">${element3}</small></p>
+        </div>
+      </div>`
+    }
+   
+}    
+function Engineert(){
+    for (let index = 0; index < Engineerteam.length; index++) {
+       let element = Engineerteam[index].name ;
+       let element1 =Engineerteam[index].id ;
+       let element2 = Engineerteam[index].email ; 
+       let element3 = Engineerteam[index].github ;
+     html =  ` <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${Engineerteam[index].name}</h5>
+          <p class="card-text"> ${Engineerteam[index].id} .</p>
+          <p class="card-text"> ${element2} .</p>
+          <p class="card-text">${element3}</p>
+        </div>
+      </div>`
+    }
+      return html;
+   
+   
+}    
+function Internt(){
+    for (let index = 0; index < Internteam.length; index++) {
+       let element =  Internteam[index].name ;
+       let element1 = Internteam[index].id ;
+       let element2 =  Internteam[index].email ; 
+       let element3 =  Internteam[index].school ;
+        return ` <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${element}</h5>
+          <p class="card-text"> ${element1} .</p>
+          <p class="card-text"> ${element2} .</p>
+          <p class="card-text">${element3}</p>
+        </div>
+      </div>`
+    }
+   
+}    
+
+function makefile() {
+    console.log(Managerteam);
+    console.log(Engineerteam);
+    console.log(Internteam);
+     let template =  `<!doctype html>
+     <html lang="en">
+       <head>
+         <!-- Required meta tags -->
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+         <!-- Bootstrap CSS -->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+     
+         <title>Team Generator</title>
+       </head>
+       <body>
+         <h1>Team Generator</h1>
+         ${Managert()}
+
+
+
+
+         ${Engineert()}
+
+
+
+         ${Internt()}
+
+       
+         <!-- Optional JavaScript; choose one of the two! -->
+     
+         <!-- Option 1: Bootstrap Bundle with Popper -->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+     
+         <!-- Option 2: Separate Popper and Bootstrap JS -->
+         <!--
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+         -->
+       </body>
+     </html> `
+     fs.writeFile("index.html", template, (err) => {
+        if(err){console.log(err)}
+        console.log("success")
+    })
+};
 
 
 questions()
