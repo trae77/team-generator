@@ -171,12 +171,13 @@ function intern() {
 }
 
 function Managert(){
+    let html = ""
     for (let index = 0; index < Managerteam.length; index++) {
        let element = Managerteam[index].name ;
        let element1 = Managerteam[index].id ;
        let element2 = Managerteam[index].email ; 
        let element3 = Managerteam[index].officenumber ;
-        return ` <div class="card">
+     html+= ` <div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${element}</h5>
@@ -186,35 +187,40 @@ function Managert(){
         </div>
       </div>`
     }
-   
+   return html;
 }    
 function Engineert(){
+    let html = ""
     for (let index = 0; index < Engineerteam.length; index++) {
+   
        let element = Engineerteam[index].name ;
        let element1 =Engineerteam[index].id ;
        let element2 = Engineerteam[index].email ; 
        let element3 = Engineerteam[index].github ;
-     html =  ` <div class="card">
+      
+         html += ` <div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">${Engineerteam[index].name}</h5>
-          <p class="card-text"> ${Engineerteam[index].id} .</p>
+          <h5 class="card-title">${element}</h5>
+          <p class="card-text"> ${element1} .</p>
           <p class="card-text"> ${element2} .</p>
           <p class="card-text">${element3}</p>
         </div>
       </div>`
+   
     }
-      return html;
+     return html;
    
    
 }    
 function Internt(){
+    let html = ""
     for (let index = 0; index < Internteam.length; index++) {
        let element =  Internteam[index].name ;
        let element1 = Internteam[index].id ;
        let element2 =  Internteam[index].email ; 
        let element3 =  Internteam[index].school ;
-        return ` <div class="card">
+      html +=` <div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${element}</h5>
@@ -224,7 +230,7 @@ function Internt(){
         </div>
       </div>`
     }
-   
+   return html;
 }    
 
 function makefile() {
@@ -240,21 +246,21 @@ function makefile() {
      
          <!-- Bootstrap CSS -->
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-     
+         <link rel="stylesheet" href=./style.css>
          <title>Team Generator</title>
        </head>
        <body>
          <h1>Team Generator</h1>
-         ${Managert()}
+        manager ${Managert()}
 
 
 
 
-         ${Engineert()}
+       engineer  ${Engineert()}
 
 
 
-         ${Internt()}
+       intern  ${Internt()}
 
        
          <!-- Optional JavaScript; choose one of the two! -->
