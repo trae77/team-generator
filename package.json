@@ -1,0 +1,25 @@
+{
+  "name": "team-generator",
+  "version": "1.0.0",
+  "description": "- [Description](#description)\r   - [Installation](#installation)\r   - [Usage](#usage)\r   - [License](#license)\r   - [Contributors](#contributors)\r   - [Tests](#tests)\r   - [Questions](#questions)",
+  "main": "employee.js",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  },
+  "scripts": {
+    "test": "jest test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trae77/team-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trae77/team-generator/issues"
+  },
+  "homepage": "https://github.com/trae77/team-generator#readme"
+}

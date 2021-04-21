@@ -177,7 +177,7 @@ function Managert(){
        let element1 = Managerteam[index].id ;
        let element2 = Managerteam[index].email ; 
        let element3 = Managerteam[index].officenumber ;
-     html+= ` <div class="card">
+     html+= `<div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${element}</h5>
@@ -198,7 +198,7 @@ function Engineert(){
        let element2 = Engineerteam[index].email ; 
        let element3 = Engineerteam[index].github ;
       
-         html += ` <div class="card">
+         html += `  <div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${element}</h5>
@@ -251,10 +251,11 @@ function makefile() {
        </head>
        <body>
          <h1>Team Generator</h1>
+        
         manager ${Managert()}
 
 
-
+  
 
        engineer  ${Engineert()}
 
