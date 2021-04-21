@@ -38,10 +38,6 @@
 
   ## Questions
   Find me on Github or reach out via email
+You can find me on GitHub at [trae77](https://github.com/trae77)
 
-  You can find me on GitHub at [iigonzoii](https://github.com/iigonzoii)
-
-  Email me if you run into any questions at a.gonzalez418@gmail.com
- 
- 
- <a href="https://drive.google.com/file/d/1RtkfeQF_KHjy0BkcvBe0SF9fTBpma_kL/view?usp=sharing" target="_blank">heres a walkthrough of the application if you need further review!</a>
+  Email me if you run into any questions at soccerreferee7@gmail.com
